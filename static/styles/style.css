@@ -293,6 +293,7 @@ li:first-child {
 	height: 35rem;
 	width: 20rem;
 	object-fit: cover;
+    object-position: 65% center;
 	border-radius: var(--border-radius);
 	box-shadow: var(--color-shadow) 0rem 1rem 2.75rem;
 	transition: var(--transition-speed) ease-in-out;

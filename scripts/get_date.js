@@ -1,26 +1,21 @@
 function showTime() {
-	const date = new Date();
+    const date = new Date();
 
-	let today = date.toLocaleString("en", { weekday: "long" });
-	let hour = date.toLocaleString("pl", { hour: "2-digit" });
-	let minute = date.toLocaleString("en", { minute: "2-digit" });
-	let second = date.toLocaleString("en", { second: "2-digit" });
-	let day = date.toLocaleString("en", { day: "2-digit" });
-	let month = date.toLocaleString("en", { month: "2-digit" });
-	let year = date.toLocaleString("en", { year: "numeric" });
+    const weekday = date.toLocaleString("ja", { weekday: "long" });
 
-	minute = addZero(minute);
-	second = addZero(second);
+    const year = date.getFullYear();
+    const month = date.getMonth() + 1;
+    const day = date.getDate();
 
-	document.getElementById(
-		"date-display"
-	).innerHTML = `${today}, ${hour}:${minute}:${second} | ${day}/${month}/${year}`;
-	setTimeout(showTime, 0);
-}
+    const hours = String(date.getHours()).padStart(2, "0");
+    const minutes = String(date.getMinutes()).padStart(2, "0");
+    const seconds = String(date.getSeconds()).padStart(2, "0");
 
-function addZero(i) {
-	if (i.length < 2) i = "0" + i;
-	return i;
+    const dateString = `${year}年${month}月${day}日`;
+    const timeString = `${hours}時${minutes}分${seconds}秒`;
+
+    document.getElementById("date-display").textContent = `${weekday}, ${dateString} | ${timeString}`;
+    setTimeout(showTime, 1000);
 }
 
 showTime();
